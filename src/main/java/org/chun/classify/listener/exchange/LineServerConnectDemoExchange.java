@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.chun.classify.listener.LineServerConnectDemoListener;
 import org.chun.classify.listener.base.AbstractMessageExchange;
+import org.chun.classify.listener.base.MessageExchange;
 import org.chun.classify.listener.event.LineServerConnectDemoEvent;
 import org.springframework.stereotype.Component;
 
@@ -19,5 +20,10 @@ public class LineServerConnectDemoExchange extends AbstractMessageExchange<LineS
 	@Override
 	public Consumer<LineServerConnectDemoEvent> listener() {
 		return this.lineServerConnectDemoListener::onHandle;
+	}
+
+	@Override
+	public Class<LineServerConnectDemoEvent> eventType() {
+		return LineServerConnectDemoEvent.class;
 	}
 }

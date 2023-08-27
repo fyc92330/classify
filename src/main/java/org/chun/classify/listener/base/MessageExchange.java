@@ -8,4 +8,6 @@ public interface MessageExchange<T extends CustomEvent> {
 	void handle(T message);
 
 	Consumer<T> listener();
+
+	Class<? extends CustomEvent> eventType();
 }

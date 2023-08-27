@@ -3,6 +3,7 @@ package org.chun.classify;
 import com.linecorp.bot.model.event.CallbackRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.chun.classify.config.ClassifyEventPublisher;
 import org.chun.classify.listener.base.MessageExchange;
 import org.chun.classify.listener.event.LineServerConnectDemoEvent;
 import org.chun.classify.listener.exchange.LineServerConnectDemoExchange;
@@ -26,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 public class ClassifyApplication implements CommandLineRunner {
 
-	private final MessageExchange<?> messageExchange;
+	private final ClassifyEventPublisher classifyEventPublisher;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ClassifyApplication.class, args);
@@ -39,7 +40,8 @@ public class ClassifyApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		messageExchange.handle(new LineServerConnectDemoEvent("Uf003b5b19031f186c4bd889e6961a411"));
+		LineServerConnectDemoEvent lineServerConnectDemoEvent = new LineServerConnectDemoEvent("Uf003b5b19031f186c4bd889e6961a411");
+		classifyEventPublisher.publishEvent(lineServerConnectDemoEvent);
 	}
 
 	@Scheduled(cron = "0 */10 * * * *")

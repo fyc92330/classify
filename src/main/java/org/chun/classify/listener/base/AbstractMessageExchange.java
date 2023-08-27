@@ -6,4 +6,5 @@ public abstract class AbstractMessageExchange<T extends CustomEvent> implements 
 	public void handle(T message){
 		this.listener().accept(message);
 	}
+
 }

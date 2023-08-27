@@ -20,4 +20,9 @@ public class LineReplyMessageExpiredExchange extends AbstractMessageExchange<Lin
 	public Consumer<LineReplyMessageExpiredEvent> listener() {
 		return this.lineReplyMessageExpiredListener::onHandle;
 	}
+
+	@Override
+	public Class<LineReplyMessageExpiredEvent> eventType() {
+		return LineReplyMessageExpiredEvent.class;
+	}
 }
