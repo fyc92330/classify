@@ -10,7 +10,9 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 public class ActivityCache implements AbstractCache<Activity> {
 
+	//ActivityCode, Activity
 	Map<String, Activity> onlineActivityMap = new ConcurrentHashMap<>();
+
 
 	@Override
 	public void init() {
@@ -18,18 +20,18 @@ public class ActivityCache implements AbstractCache<Activity> {
 	}
 
 	@Override
-	public void put() {
-
+	public void put(Activity info) {
+		onlineActivityMap.put(info.activityCode(), info);
 	}
 
 	@Override
 	public Activity get(String id) {
-		return null;
+		return onlineActivityMap.get(id);
 	}
 
 	@Override
 	public List<Activity> cacheInfo() {
-		return null;
+		return onlineActivityMap.values().stream().toList();
 	}
 
 	@Override

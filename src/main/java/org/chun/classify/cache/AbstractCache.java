@@ -5,7 +5,7 @@ import java.util.List;
 public interface AbstractCache<T> {
 	void init();
 
-	void put();
+	void put(T info);
 
 	T get(String id);
 

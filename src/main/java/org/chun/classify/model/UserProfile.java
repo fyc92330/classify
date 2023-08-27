@@ -1,4 +1,10 @@
 package org.chun.classify.model;
 
-public record UserProfile() {
+public record UserProfile(
+		String userId,
+		String name,
+		String pictureUrl,
+		String statusMessage,
+		String language
+) {
 }
