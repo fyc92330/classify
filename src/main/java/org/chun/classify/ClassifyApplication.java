@@ -3,6 +3,7 @@ package org.chun.classify;
 import com.linecorp.bot.model.PushMessage;
 import com.linecorp.bot.model.event.CallbackRequest;
 import com.linecorp.bot.model.message.TextMessage;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.chun.classify.cache.UserCache;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.File;
+import java.net.http.HttpRequest;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;

@@ -3,6 +3,7 @@ package org.chun.classify.cache;
 import org.chun.classify.constants.SystemConst;
 import org.chun.classify.model.UserProfile;
 import org.chun.classify.utils.DocumentUtil;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
