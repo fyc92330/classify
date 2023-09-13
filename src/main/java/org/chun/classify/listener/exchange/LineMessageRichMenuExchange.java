@@ -21,6 +21,6 @@ public class LineMessageRichMenuExchange extends AbstractMessageExchange<LineMes
 
 	@Override
 	public Class<? extends CustomEvent> eventType() {
-		return null;
+		return LineMessageRichMenuEvent.class;
 	}
 }

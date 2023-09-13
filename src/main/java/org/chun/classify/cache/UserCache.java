@@ -3,12 +3,13 @@ package org.chun.classify.cache;
 import org.chun.classify.constants.SystemConst;
 import org.chun.classify.model.UserProfile;
 import org.chun.classify.utils.DocumentUtil;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
 
 @Component
 public class UserCache implements AbstractCache<UserProfile> {
@@ -20,15 +21,16 @@ public class UserCache implements AbstractCache<UserProfile> {
 
 	@Override
 	public void init() {
-		List<String[]> userProfileInfos = DocumentUtil.contents(USER_PROFILE_DOC_PATH);
+		List<String[]> userProfileInfos = DocumentUtil.read(USER_PROFILE_DOC_PATH);
+		Function<String, Boolean> getUserActive = SystemConst.Y_STR::equals;
 		userProfileInfos.stream()
-				.map(info -> new UserProfile(info[0], info[1], info[2], info[3], info[4]))
+				.map(info -> new UserProfile(info[0], info[1], info[2], info[3], info[4], getUserActive.apply(info[5]), LocalDateTime.parse(info[6])))
 				.forEach(this::put);
 	}
 
 	@Override
 	public void put(UserProfile profile) {
-		users.put(profile.userId(), profile);
+		users.put(profile.getUserId(), profile);
 	}
 
 	@Override

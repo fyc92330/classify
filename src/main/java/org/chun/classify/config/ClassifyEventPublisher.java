@@ -35,7 +35,7 @@ public class ClassifyEventPublisher {
 	void init() {
 		ClassPathScanningCandidateComponentProvider scanner = new ClassPathScanningCandidateComponentProvider(false);
 		scanner.addIncludeFilter(new AssignableTypeFilter(MessageExchange.class));
-		for (BeanDefinition component : scanner.findCandidateComponents("org.chun.classify")) {
+		for (BeanDefinition component : scanner.findCandidateComponents("org.chun.classify.listener")) {
 			Class<? extends MessageExchange<?>> exchangeClass = (Class<? extends MessageExchange<?>>) Class.forName(component.getBeanClassName());
 			MessageExchange<?> messageExchange = applicationContext.getBean(exchangeClass);
 			registry.put(messageExchange.eventType(), messageExchange);

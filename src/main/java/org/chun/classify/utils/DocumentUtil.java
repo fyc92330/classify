@@ -15,7 +15,6 @@ import java.util.List;
 public class DocumentUtil {
 
 	@SneakyThrows
-
 	public static void write(String path, String content){
 		if(isExists(path)){
 			try (FileOutputStream fos = new FileOutputStream(path);
@@ -29,7 +28,7 @@ public class DocumentUtil {
 	}
 
 	@SneakyThrows
-	public static List<String[]> contents(String path) {
+	public static List<String[]> read(String path) {
 		if (isExists(path)) {
 			List<String[]> contents = new ArrayList<>();
 			try (BufferedReader reader = new BufferedReader(new FileReader(file(path)))) {

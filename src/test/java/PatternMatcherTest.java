@@ -1,4 +1,3 @@
-import org.apache.logging.log4j.util.Strings;
 import org.chun.classify.constants.SystemConst;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -18,6 +17,7 @@ public class PatternMatcherTest {
 		String command = "##change##";
 		Assertions.assertTrue(SystemConst.RICE_MENU_COMMAND_PATTERN.matcher(command).matches());
 	}
+
 	@Test
 	void ignorePatternMatcher(){
 		String command = "Abcde$@#";
